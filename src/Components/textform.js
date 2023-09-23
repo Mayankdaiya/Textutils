@@ -36,16 +36,16 @@ export default function Textform(props) {
       <div className="mb-3">
         <textarea className="form-control" placeholder='Enter your text here' value={text} onChange={changefun} id="exampleFormControlTextarea1" rows="8" style={{backgroundColor : props.mode==='dark'?'grey':'white', color : props.mode==='dark'?'white':'black'}}></textarea>
       </div>
-      <button className='btn btn-primary mx-1' onClick={clickfunU}>Convert to Uppercase</button>
-      <button className='btn btn-primary mx-1' onClick={clickfunL}>Convert to Lowercase</button>
-      <button className='btn btn-primary mx-1' onClick={speak}>Tap to speech</button>
-      <button className='btn btn-primary mx-1' onClick={cleartxt}>Clear text</button>
-      <button className='btn btn-primary mx-1' onClick={removeSpace}>Remove extra space</button>
+      <button className='btn btn-primary mx-1 my-1' onClick={clickfunU}>Convert to Uppercase</button>
+      <button className='btn btn-primary mx-1 my-1' onClick={clickfunL}>Convert to Lowercase</button>
+      <button className='btn btn-primary mx-1 my-1' onClick={speak}>Tap to speech</button>
+      <button className='btn btn-primary mx-1 my-1' onClick={cleartxt}>Clear text</button>
+      <button className='btn btn-primary mx-1 my-1' onClick={removeSpace}>Remove extra space</button>
     </div>
     <div className="container" style={{color : props.mode==='dark'?'white':'black'}}>
       <h1>Your text summary</h1>
-      <p>{text.length} words and {text.length} characters</p>
-      <p>{0.008 * text.length} Minutes read</p>
+      <p>{text.split(" ").filter((el)=>{return el.length!==0}).length} words and {text.length} characters</p>
+      <p>{0.008 * text.split(" ").filter((el)=>{return el.length!==0}).length} Minutes read</p>
       <h2>Text preview</h2>
       <p>{text.length===0?'Enter something to preview here':text}</p>
     </div>
