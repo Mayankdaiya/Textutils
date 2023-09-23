@@ -34,20 +34,20 @@ export default function Textform(props) {
     <div style={{color : props.mode==='dark'?'white':'black'}}>
       <h1>{props.heading}</h1>
       <div className="mb-3">
-        <textarea className="form-control" placeholder='Enter your text here' value={text} onChange={changefun} id="exampleFormControlTextarea1" rows="8" style={{backgroundColor : props.mode==='dark'?'grey':'white', color : props.mode==='dark'?'white':'black'}}></textarea>
+        <textarea className="form-control" placeholder='Enter your text here' value={text} onChange={changefun} id="exampleFormControlTextarea1" rows="8" style={{backgroundColor : props.mode==='dark'?'#878C8F':'#EDF2EF', color : props.mode==='dark'?'white':'black'}}></textarea>
       </div>
-      <button className='btn btn-primary mx-1 my-1' onClick={clickfunU}>Convert to Uppercase</button>
-      <button className='btn btn-primary mx-1 my-1' onClick={clickfunL}>Convert to Lowercase</button>
-      <button className='btn btn-primary mx-1 my-1' onClick={speak}>Tap to speech</button>
-      <button className='btn btn-primary mx-1 my-1' onClick={cleartxt}>Clear text</button>
-      <button className='btn btn-primary mx-1 my-1' onClick={removeSpace}>Remove extra space</button>
+      <button disabled={text.length==0} className='btn btn-primary mx-1 my-1' onClick={clickfunU}>Convert to Uppercase</button>
+      <button disabled={text.length==0} className='btn btn-primary mx-1 my-1' onClick={clickfunL}>Convert to Lowercase</button>
+      <button disabled={text.length==0} className='btn btn-primary mx-1 my-1' onClick={speak}>Tap to speech</button>
+      <button disabled={text.length==0} className='btn btn-primary mx-1 my-1' onClick={cleartxt}>Clear text</button>
+      <button disabled={text.length==0} className='btn btn-primary mx-1 my-1' onClick={removeSpace}>Remove extra space</button>
     </div>
     <div className="container" style={{color : props.mode==='dark'?'white':'black'}}>
-      <h1>Your text summary</h1>
-      <p>{text.split(" ").filter((el)=>{return el.length!==0}).length} words and {text.length} characters</p>
-      <p>{0.008 * text.split(" ").filter((el)=>{return el.length!==0}).length} Minutes read</p>
-      <h2>Text preview</h2>
-      <p>{text.length===0?'Enter something to preview here':text}</p>
+      <h1>Your Text Summary</h1>
+      <p>{text.split(/\s+/).filter((el)=>{return el.length!==0}).length} Words and {text.length} Characters</p>
+      <p>{0.008 * text.split(/\s+/).filter((el)=>{return el.length!==0}).length} Minutes read</p>
+      <h2>Text Preview</h2>
+      <p>{text.length===0?'Nothing to preview.':text}</p>
     </div>
     </>
   )
